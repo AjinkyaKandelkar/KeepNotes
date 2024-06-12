@@ -32,7 +32,7 @@ export class NoteService {
   
   private notesSubject = new BehaviorSubject<Note[]>(this.notes);
   notes$ = this.notesSubject.asObservable();
-  Apiurl:string="http://localhost:3000/notes";
+  Apiurl:string="/.netlify/functions/json-server";
   
   createNote(title: string, content: string)
   {
@@ -49,16 +49,16 @@ export class NoteService {
   }
   updateValue(note:Note)
   {
-    return this.http.put(this.Apiurl+"/"+note.id,note);
+    return this.http.put(`${this.Apiurl}/${note.id}`,note);
   }
   getNote(id:string)
   {
-    return this.http.get(this.Apiurl+"/"+id);
+    return this.http.get(`${this.Apiurl}/${id}`);
   }
   deleteNote(id:any)
   {
     
-    return this.http.delete(this.Apiurl+"/"+id);
+    return this.http.delete(`${this.Apiurl}/${id}`);
   }
   
 }
