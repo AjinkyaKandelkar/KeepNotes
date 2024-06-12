@@ -1,0 +1,13 @@
+<app-toolbar></app-toolbar>
+
+<div class="container">
+  <app-sidebar #sidebar></app-sidebar>
+
+  <div class="main-content">
+    <app-note-list></app-note-list>
+  </div>
+</div>
+
+<button mat-icon-button class="action-button" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>

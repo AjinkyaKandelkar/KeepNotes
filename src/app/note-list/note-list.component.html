@@ -1,0 +1,58 @@
+  <div class="note-container">
+    <div class="pinned-notes">
+      <h2>Pinned</h2>
+      <div class="note-grid">
+        <div class="note-card" *ngFor="let note of paginatedPinnedNotes"  >
+          <div class="" (click)="openDialog(note)">
+            <div class="note-header">
+              <h3>{{ note.title }}</h3>
+            </div>
+            <p>{{ note.content }}</p>
+          </div>
+           
+              <button mat-icon-button class="pin-btn"  (click)="pinNote(note)"  >
+                <mat-icon>{{ note.pinned ? 'push_pin' : 'outlined_flag' }}</mat-icon>
+              </button>
+            
+            <mat-card-footer>
+                <span>
+                    <button mat-icon-button  class="delete-btn" (click)="delete(note.id)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    
+                </span>
+                <button mat-icon-button disabled=""></button>
+            </mat-card-footer>
+          </div>
+      </div>
+    </div>
+  
+    <div class="other-notes">
+      <h2>Others</h2>
+      <div class="note-grid">
+        <div class="note-card" *ngFor="let note of paginatedUnpinnedNotes">
+          <div class="" (click)="openDialog(note)">
+            <div class="note-header">
+              <h3>{{ note.title }}</h3>
+            </div>
+            <p>{{ note.content }}</p>
+          </div>
+              <button mat-icon-button (click)="pinNote(note)" class="pin-btn">
+                <mat-icon>{{ note.pinned ? 'push_pin' : 'outlined_flag' }}</mat-icon>
+              </button>
+            
+            <mat-card-footer>
+                <span>
+                    <button mat-icon-button  class="delete-btn" (click)="delete(note.id)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    
+                </span>
+                <button mat-icon-button disabled=""></button>
+            </mat-card-footer>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <mat-paginator [length]="totalNotes" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="onPageChange($event)"></mat-paginator>

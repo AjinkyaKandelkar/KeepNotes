@@ -1,0 +1,13 @@
+<h1 mat-dialog-title class="dialog-title">{{data.isEdit ? 'Edit Note' : 'Add Note'}}</h1>
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field class="dialog-form-field">
+    <input matInput placeholder="Title" [(ngModel)]="data.note.title">
+  </mat-form-field>
+  <mat-form-field class="dialog-form-field">
+    <textarea matInput placeholder="Body" [(ngModel)]="data.note.content"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button class="dialog-button dialog-cancel-button" (click)="onCancel()">Cancel</button>
+  <button mat-button class="dialog-button dialog-save-button" (click)="onSave()">Save</button>
+</div>

@@ -1,0 +1,92 @@
+.note-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pinned-notes,
+.other-notes {
+  margin-bottom: 20px;
+}
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.note-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 16px;
+  position: relative;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.note-card h3 {
+  margin-top: 0;
+}
+
+.note-card p {
+  margin-bottom: 0;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.pin-btn{
+    position: absolute;
+    color: #606060;
+    top: 8px;
+    right: 8px;
+    display: none;
+    transition: opacity 0.3s;
+
+}
+.note-card:hover .pin-btn{
+    display: block;
+    opacity: 1;
+  }
+  .note-card:hover .delete-btn{
+    display: block;
+    opacity: 1;
+  }
+.delete-btn {
+    display: none;
+    right: 10px;
+    position: absolute;
+    color: #606060;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+}
+
+.pin-btn:focus,
+.delete-btn:focus {
+  outline: none;
+}
+
+.pin-btn:hover,
+.delete-btn:hover {
+  color: #333;
+}
+mat-paginator {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1px 20px; /* Adjust padding as needed */
+    background: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    
+}
