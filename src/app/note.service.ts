@@ -32,7 +32,7 @@ export class NoteService {
   
   private notesSubject = new BehaviorSubject<Note[]>(this.notes);
   notes$ = this.notesSubject.asObservable();
-  Apiurl:string="/.netlify/functions/json-server";
+  Apiurl:string="https://notesjsonserver.onrender.com/notes";
   
   createNote(title: string, content: string)
   {
