@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NoteService } from '../note.service';
 
 @Component({
   selector: 'app-note-dialog',
@@ -9,6 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class NoteDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<NoteDialogComponent>,
+    public noteService:NoteService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -17,7 +19,16 @@ export class NoteDialogComponent {
   }
 
   onSave(): void {
-    this.dialogRef.close(this.data.note);
+    if(this.data.note.title != null)
+      {
+        this.dialogRef.close(this.data.note);
+      }
+    else{
+      this.noteService.Toast.fire({
+        icon: "warning",
+        title: "Note requires a title."
+      });
+    }
   }
 
 }

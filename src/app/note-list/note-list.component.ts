@@ -58,6 +58,9 @@ export class NoteListComponent implements OnInit {
   {
     this.noteService.getAllNotes().subscribe(
       data=>{
+        data.sort((a,b)=>{
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        })
         this.notes = data;
         this.totalNotes = data.length;
         this.updatePaginatedNotes();

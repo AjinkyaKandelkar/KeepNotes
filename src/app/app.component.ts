@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NoteDialogComponent } from './note-dialog/note-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NoteService } from './note.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-root',
@@ -26,16 +26,25 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (Object.keys(result).length != 0) {
         this.noteService.createNote(result.title, result.content).subscribe(
           (data)=>{
             this.noteService.Toast.fire({
               icon: "success",
               title: "created Note"
             });
+            setTimeout(()=>{
+              window.location.reload(); 
+            },1500);
+          },
+          error =>{
+            this.noteService.Toast.fire({
+              icon: "error",
+              title: "Error Creating Note"
+            });
           }
+          
         )
-        
       }
     });
   }

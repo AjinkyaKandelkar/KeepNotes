@@ -15,7 +15,8 @@ export class NoteService {
   singlenote:Note={
     title:"",
     content:"",
-    pinned:false
+    pinned:false,
+    createdAt:new Date()
   };
 
   Toast = Swal.mixin({
@@ -39,6 +40,7 @@ export class NoteService {
     debugger
     this.singlenote.title = title;
     this.singlenote.content = content;
+    this.singlenote.createdAt = new Date();
     // this.singlenote.pinned=false;
 
     return this.http.post(this.Apiurl,this.singlenote);
