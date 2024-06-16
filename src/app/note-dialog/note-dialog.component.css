@@ -33,13 +33,13 @@
 }
 
 .dialog-save-button {
-  background-color: #ffeb3b;
-  color: #333;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  
 }
 
 .dialog-save-button:hover {
-  background-color: #fdd835;
-  color: #333;
+  background-color: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
 }
 
 .dialog-cancel-button {
